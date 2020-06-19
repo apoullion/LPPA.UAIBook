@@ -1,0 +1,107 @@
+﻿<!DOCTYPE html>
+
+<html>
+
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>UAI Book</title>
+    <link href="~/Content/Site.css" rel="stylesheet" />
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css">
+    <link href="http://fonts.googleapis.com/css?family=Cookie" rel="stylesheet" type="text/css">
+    
+</head>
+<body>
+    <div id="wrapper">
+        <header class="header-background"></header>
+        <nav>
+            <div>
+                <ul>
+                    <li>@Html.ActionLink("Home", "Index", "Home")</li>
+                    <li>@Html.ActionLink("Catalogo", "Index", "Catalogo")</li>
+                    <li>@Html.ActionLink("Autor", "Index", "Autor")</li>
+                    <li class="dropdown">
+                        <a href="#" class="dropbtn">Reservas</a>
+                        <div class="dropdown-content">
+                            <a @Html.ActionLink("Ver Deudores", "Deudores", "Reserva")</a>
+                            <a @Html.ActionLink("Gestionar Reservas", "Index", "Reserva")</a>
+                            <a @Html.ActionLink("Reservar Libro", "Index", "Libro")</a>
+                        </div>
+                    </li>
+                    <li class="dropdown">
+                        <a href="#" class="dropbtn">Libros</a>
+                        <div class="dropdown-content">
+                            <a @Html.ActionLink("Importar Libros", "ImportarLibro", "Libro")</a>
+                            <a @Html.ActionLink("Gestionar Libros", "Index", "Libro")</a>
+                        </div>
+                    </li>
+                    <li>@Html.ActionLink("Acerca de Nosotros", "Acerca", "Home")</li>
+                    <li>@Html.ActionLink("Contacto", "Contacto", "Home")</li>
+                </ul>
+            </div>
+        </nav>
+        <section>
+            <div class="content">
+                @RenderBody()
+            </div>
+        </section>
+        <aside>
+            <h1>Libros mas reservados</h1>
+            <ul class="sidebar">
+                <li>@Html.ActionLink("La bella y la bestia", "Index", "Home")</li>
+                <li>@Html.ActionLink("Romeo y Julieta", "Index", "Catalogo")</li>
+                <li>@Html.ActionLink("Un tren a Cartagena", "Acerca", "Home")</li>
+                <li>@Html.ActionLink("Hansel y Gretel", "Contacto", "Home")</li>
+            </ul>
+            <br />
+            <h1>Nuestras Redes Sociales</h1>
+            <ul class="sidebar">
+                <li>@Html.ActionLink("Facebook", "Index", "Home")</li>
+                <li>@Html.ActionLink("Twitter", "Index", "Catalogo")</li>
+                <li>@Html.ActionLink("Instagram", "Acerca", "Home")</li>
+                <li>@Html.ActionLink("Google Plus", "Contacto", "Home")</li>
+            </ul>
+        </aside>
+        <footer class="footer-distributed">
+            <div class="footer-left">
+                <h3>UAI <span>Book</span></h3>
+                <p class="footer-links">
+                    <a href="#">Home</a>
+                    ·
+                    <a href="#">About Us</a>
+                    ·
+                    <a href="#">Contacto</a>
+                </p>
+                <p class="footer-company-name">&copy; @DateTime.Now.Year - UAI Book - Lucas Hartridge</p>
+            </div>
+            <div class="footer-center">
+                <div>
+                    <i class="fa fa-map-marker"></i>
+                    <p><span>Arias 234</span> Bs.As, Argentina</p>
+                </div>
+                <div>
+                    <i class="fa fa-phone"></i>
+                    <p>+1 555 123456</p>
+                </div>
+                <div>
+                    <i class="fa fa-envelope"></i>
+                    <p><a href="mailto:uaibooklh@gmail.com">uaibooklh@gmail.com</a></p>
+                </div>
+            </div>
+            <div class="footer-right">
+                <p class="footer-company-about">
+                    <span>Acerca de Nosotros</span>
+                    Nuestro objetivo es dar soporte de reserva de libros online
+                </p>
+                <div class="footer-icons">
+                    <a href="#"><i class="fa fa-facebook"></i></a>
+                    <a href="#"><i class="fa fa-twitter"></i></a>
+                    <a href="#"><i class="fa fa-linkedin"></i></a>
+                    <a href="#"><i class="fa fa-github"></i></a>
+                </div>
+            </div>
+    </footer>
+    </div>
+    <script src="~/Scripts/jquery-1.10.2.js"></script>
+    @RenderSection("scripts", required: false)
+</body>
+</html>

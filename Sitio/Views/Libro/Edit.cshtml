@@ -1,0 +1,55 @@
+﻿@model DTO.DtoLibro
+
+@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Editar</h2>
+
+@using (Html.BeginForm())
+{
+
+        @Html.ValidationSummary(true)
+     <div class="form"> 
+
+            @Html.TextBox("txtId", Model.Id, new { @class = "hidden"})
+
+            @Html.LabelFor(m => m.ISBN, "ISBN", new { @class = "label" })
+            @Html.TextBox("txtIsbn",Model.ISBN, new { @placeholder = "ISBN", @class = "fields" })
+            @Html.ValidationMessageFor(model => model.ISBN)
+            
+            @Html.LabelFor(m => m.Titulo, "Titulo", new { @class = "label" })
+            @Html.TextBox("txtTitulo", Model.Titulo, new { @placeholder = "Titulo", @class = "fields" })
+            @Html.ValidationMessageFor(model => model.Titulo)
+           
+            @Html.LabelFor(model => model.Autor, new { @class = "label" })
+            @Html.DropDownList("autorDropDownList", Model.AutorList, new { @class = "fields" })
+            
+
+            @Html.LabelFor(model => model.Genero, new { @class = "label" })
+            @Html.DropDownList("generoDropDownList", Model.GeneroList, new {@class = "fields" })
+           
+            @Html.LabelFor(model => model.Editorial, new { @class = "label" })
+            @Html.DropDownList("editorialDropDownList", Model.EditorialList, new {@class = "fields" })
+            
+            @Html.LabelFor(model => model.Destacado, new { @class = "label" })
+            @Html.RadioButton("chkDestacado", Model.Destacado, new {@class = "fields" })
+            @Html.ValidationMessageFor(model => model.Destacado)
+
+            @Html.LabelFor(model => model.Imagen, new { @class = "label" })
+            @Html.TextBox("txtImagen", Model.Imagen, new { @placeholder = "Imagen", @class = "fields" })
+            @Html.ValidationMessageFor(model => model.Imagen)
+
+            @Html.LabelFor(model => model.Cantidad, new { @class = "label" })
+            @Html.TextBox("txtCantidad", Model.Cantidad, new { @placeholder = "Cantidad", @class = "fields", @min = "1", @type = "number" })
+            @Html.ValidationMessageFor(model => model.Cantidad)
+
+         <input type="submit" id="button" value="Actualizar" />
+        
+    </div>
+}
+
+<div>
+    @Html.ActionLink("Volver Atrás", "Index", new { @class = "link" })
+</div>

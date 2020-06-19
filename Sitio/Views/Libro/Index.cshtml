@@ -1,0 +1,109 @@
+﻿@model System.Collections.Generic.IEnumerable<DTO.DtoLibro>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Libros</h2>
+
+
+   @Html.Label("Search", "Inserte el Titulo o ISBN", new { @class = "label" })
+<p>
+    @Html.TextBox("txtBusqueda", "", new { @placeholder= "Inserte Titulo o ISBN",@class = "searchField" }) &nbsp;
+    <input type="submit" class="searchButton" id="search" value="Buscar" />
+</p> 
+
+<table id="mitabla1">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.ISBN)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Titulo)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Editorial)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Cantidad)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Autor)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Genero)
+            </th>
+            <th>Acciones</th>
+        </tr>
+    </thead>
+
+    @foreach (var item in Model)
+{
+    <tbody>
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.ISBN)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Titulo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Editorial.Nombre)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Cantidad)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Autor.Apellido)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Genero.Nombre)
+            </td>
+            <td>
+                @Html.ActionLink("Editar", "Edit", new { item.Id }) |
+                @Html.ActionLink("Ver", "Details", new { item.Id }) |
+                @Html.ActionLink("Borrar", "Delete", new { item.Id }) |
+                @Html.ActionLink("Reservar", "Create", new { Controller = "Reserva", action = "Create", id = item.Id })
+            </td>
+        </tr>
+    </tbody>
+}
+    </table>
+
+<div class="row">
+    @Html.ActionLink("Agregar", "Create", new { @class = "link" })
+</div>
+
+@section Scripts
+{
+<script type="text/javascript">
+    // Cuando el body se carga JQuery esta listo para usarse
+    $(document).ready(function () {
+        // Cuando se Escribe en el Text Box Search
+        $("#txtBusqueda").keyup(function () {
+            //  Cuando el Valor no es Vacio
+            if ($(this).val() != "") {
+                // Solo se mostraran los TR del Body que existan, los otros se esconden
+                $("#mitabla1 tbody>tr").hide();
+                $("#mitabla1 th").show();
+                $("#mitabla1 td:contains-ci('" + $(this).val() + "')").parent("tr").show();
+                
+            }
+            else {
+                // Cuando se limpia se muestra todo de nuevo
+                $("#mitabla1 tbody>tr").show();
+            }
+        });
+    });
+    // jQuery expression for case-insensitive filter
+    $.extend($.expr[":"],
+    {
+        "contains-ci": function (elem, i, match, array) {
+            return (elem.textContent || elem.innerText || $(elem).text() || "").toLowerCase().indexOf((match[3] || "").toLowerCase()) >= 0;
+        }
+    });
+    </script>
+}
+
