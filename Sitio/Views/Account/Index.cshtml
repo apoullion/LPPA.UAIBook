@@ -1,0 +1,36 @@
+﻿@model DTO.DtoMembershipUser
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Iniciar Sesión</h2>
+
+@using (Html.BeginForm())
+{
+
+    @Html.ValidationSummary(true)
+    <div class="form">
+
+        @Html.LabelFor(m => m.Email, "E-Mail", new { @class = "label" })
+        @Html.ValidationMessageFor(model => model.Email)
+        @Html.TextBox("txtEmail", Model.Email, new { @placeholder = "Ingrese su E-mail", @class = "fields" })
+        
+
+
+        @Html.LabelFor(m => m.Password, "Contraseña", new { @class = "label" })
+        @Html.ValidationMessageFor(model => model.Password)
+        @Html.Password("txtPassword", Model.Password, new { @placeholder = "Ingrese su Contraseña", @class = "fields" })
+        
+
+        <input type="submit" id="button" value="Iniciar Sesion" />
+    </div>
+    
+    <br />
+<div>
+    @Html.ActionLink("Crear Usuario","Create","", new { @class = "link" })
+    |
+    @Html.ActionLink("Olvido su Contraseña?", "SendPassword", "", new { @class = "link" })
+</div>
+
+}

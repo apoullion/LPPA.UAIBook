@@ -1,0 +1,55 @@
+﻿@model System.Collections.Generic.IEnumerable<DTO.DtoPrestamo>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Gestion de Reservas</h2>
+
+<table id="mitabla1">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Libro.Titulo)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PrestamoEstado.Estado)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PrestamoEstado.Fecha)
+        </th>
+        <th>
+            Codigo Usuario
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Libro.Cantidad)
+        </th>
+        <th>Acciones</th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Libro.Titulo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PrestamoEstado.Estado)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PrestamoEstado.Fecha)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.UserId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Libro.Cantidad)
+            </td>
+
+            <td>
+                @Html.ActionLink("Entregar Libro", "EntregarLibro", new { item.Id })
+            </td>
+        </tr>
+
+    }
+</table>

@@ -1,0 +1,61 @@
+﻿@model DTO.DtoPrestamo
+
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Reservar Libro</h2>
+<br />
+
+@using (Html.BeginForm())
+{
+        @Html.ValidationSummary(true)
+
+        <div class="form"> 
+
+            @Html.TextBox("txtId", Model.Libro.Id, new { @class = "hidden" })
+
+            @Html.LabelFor(model => model.Libro.Titulo, "Libro", new { @class = "label" })
+           // @Html.TextBox("txtLibro", Model.Libro.Titulo, new { @readonly = "readonly", @class = "fields" })
+
+            @Html.LabelFor(model => model.PrestamoEstado.Fecha, "Fecha de Prestamo", new {  @class = "label" })
+           // @Html.TextBox("txtFecha", Model.PrestamoEstado.Fecha, new { @readonly = "readonly", placeholder = "Fecha", @class = "fields" })
+            @Html.ValidationMessageFor(model => model.PrestamoEstado.Fecha)
+
+            @Html.LabelFor(model => model.Libro.Cantidad, "Cantidad Disponible", new { @class = "label" })
+           // @Html.TextBox("txtCantidad", Model.Libro.Cantidad, new { @readonly = "readonly", placeholder = "Cantidad", @class = "fields" })
+            @Html.ValidationMessageFor(model => model.Libro.Cantidad)
+
+            @Html.LabelFor(model => model.PrestamoEstado.Estado, "Estado", new { @class = "label" })
+           // @Html.TextBox("txtEstado", Model.PrestamoEstado.Estado, new { @readonly = "readonly", placeholder = "Estado", @class = "fields" })
+            @Html.ValidationMessageFor(model => model.PrestamoEstado.Estado)
+
+            <input type="submit" id="button" value="Crear Prestamo" />
+        </div>
+            
+}
+
+<br />
+<div>
+    @Html.ActionLink("Home","Index","", new { @class = "link" }) | 
+    @Html.ActionLink("Home", "Index", "Libro", new { @class = "link" })
+</div>
+
+@section Scripts
+{
+    <script type="text/javascript">
+        // Cuando el body se carga JQuery esta listo para usarse
+        $(document).ready(function () {
+            // Cuando se Escribe en el Text Box Search
+            //$("#txtCantidad").on("mouseleave",function () {
+                //  Cuando el Valor no es Vacio
+            if ($("#txtCantidad").val() == 0) {
+                    // Solo se mostraran los TR del Body que existan, los otros se esconden
+                    $("#button").attr("disabled", true);
+                    alert('No existe Stock Actualmente para este Libro');
+                }
+            });
+     
+    </script>
+}

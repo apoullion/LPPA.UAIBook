@@ -1,0 +1,49 @@
+﻿
+@{
+    ViewBag.Title = "Acerca";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Acerca de Nosostros</h2>
+
+<br />
+
+<div class="form">
+
+    @Html.Label("Mail","Mail", new { @class = "label" })
+    @Html.TextBox("txtMail", "uaibook@gmail.com", new { @readonly = "readonly", @class = "fields" })
+
+    @Html.Label("Direccion", "Direccion", new { @class = "label" })
+    @Html.TextBox("txtDireccion", "Los Incas 3063 - Buenos Aires - Argentina", new { @readonly = "readonly", @class = "fields" })
+
+    @Html.Label("Telefono", "Telefono", new { @class = "label" })
+    @Html.TextBox("txtTel", "5433-9188", new { @readonly = "readonly", @class = "fields" })
+
+    @Html.Label("Mail Soporte", "Mail Soporte", new { @class = "label" })
+    @Html.TextBox("txtMailSoporte", "Soporte@Uaibook.com.ar", new { @readonly = "readonly", @class = "fields" })
+
+    @Html.Label("Mail Markenting", "Mail Marketing", new { @class = "label" })
+    @Html.TextBox("txtMkt", "Marketing@Uaibook.com.ar", new { @readonly = "readonly", @class = "fields" })
+
+    </div>
+
+<br />
+
+<div id="map" style="width: 300px; height: 300px;"></div>
+
+@section Scripts
+{
+<script src="http://maps.googleapis.com/maps/api/js"></script>
+
+<script>
+    function initialize() {
+        var mapProp = {
+            center: new google.maps.LatLng(51.508742, -0.120850),
+            zoom: 5,
+            mapTypeId: google.maps.MapTypeId.SATELLITE
+        };
+        var map = new google.maps.Map(document.getElementById("map"), mapProp);
+    }
+    google.maps.event.addDomListener(window, 'load', initialize);
+</script>
+}

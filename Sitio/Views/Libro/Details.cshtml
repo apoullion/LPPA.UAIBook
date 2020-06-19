@@ -1,0 +1,49 @@
+﻿@model DTO.DtoLibro
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<h2>Details</h2>
+<div class="form">
+
+    @Html.LabelFor(m => m.ISBN, "ISBN", new { @class = "label" })
+    @Html.TextBox("txtIsbn", Model.ISBN, new { @readonly = "readonly", @class = "fields" })
+    @Html.ValidationMessageFor(model => model.ISBN)
+
+    @Html.LabelFor(m => m.Titulo, "Titulo", new { @class = "label" })
+    @Html.TextBox("txtTitulo", Model.Titulo, new { @readonly = "readonly", @class = "fields" })
+    @Html.ValidationMessageFor(model => model.Titulo)
+
+    @Html.LabelFor(model => model.Autor, new { @class = "label" })
+    @Html.TextBox("txtAutor", Model.Autor.Apellido, new { @readonly = "readonly", @class = "fields" })
+    @Html.ValidationMessageFor(model => model.AutorId)
+
+    @Html.LabelFor(model => model.Genero, new { @class = "label" })
+    @Html.TextBox("txtGenero", Model.Genero.Nombre, new { @readonly = "readonly", @class = "fields" })
+    @Html.ValidationMessageFor(model => model.GeneroId)
+
+    @Html.LabelFor(model => model.Editorial, new { @class = "label" })
+    @Html.TextBox("txtEditorial", Model.Editorial.Nombre, new { @readonly = "readonly", @class = "fields" })
+    @Html.ValidationMessageFor(model => model.EditorialId)
+
+    @Html.LabelFor(model => model.Destacado, new { @class = "label" })
+    @Html.CheckBox("chkDestacado", Model.Destacado, new { @disabled = "disabled", @class = "fields" })
+    @Html.ValidationMessageFor(model => model.Destacado)
+
+    @Html.LabelFor(model => model.Imagen, new { @class = "label" })
+    @Html.TextBox("txtImagen", Model.Imagen, new { @readonly = "readonly", @class = "fields" })
+    @Html.ValidationMessageFor(model => model.Imagen)
+
+
+    @Html.LabelFor(model => model.Cantidad, new { @class = "label" })
+    @Html.TextBox("txtCantidad", Model.Cantidad, new { @readonly = "readonly", @class = "fields", @min = "1", @type = "number" })
+    @Html.ValidationMessageFor(model => model.Cantidad)
+    </div>
+
+    <p class="link">
+        @Html.ActionLink("Editar", "Edit", new { id = Model.Id }, new { @class = "link" }) |
+        @Html.ActionLink("Volver atras", "Index", new { @class = "link" })
+    </p>

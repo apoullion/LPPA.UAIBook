@@ -1,0 +1,23 @@
+﻿@model System.Collections.Generic.IEnumerable<DTO.DtoLibro>
+
+@{
+    ViewBag.Title = "Home";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Bienvenido a Uai Book</h1>
+<br />
+<h1>A continuación encontrará un listado con los 20 libros mas reservados !</h1>
+
+
+    <div class="row">
+        @foreach (var item in Model)
+        {
+            <div class="img">
+                <a target="_self" href="@Url.Action("Index", "Libro")">
+                    <img src="@Url.Content("~/Content/Images/" + @Html.DisplayFor(modelItem => item.Imagen)) " alt="@Html.DisplayFor(modelItem => item.Titulo)">
+                </a>
+                <div class="desc">@Html.DisplayFor(modelItem => item.Titulo)</div>
+            </div>
+        }
+    </div>

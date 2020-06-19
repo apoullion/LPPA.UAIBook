@@ -1,0 +1,125 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{196FC362-F158-42CB-B57B-F14BA3AB62D9}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Framework</RootNamespace>
+    <AssemblyName>Framework</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <DocumentationFile>bin\Debug\Framework.xml</DocumentationFile>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.Office.Interop.Excel, Version=14.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c, processorArchitecture=MSIL">
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Framework Seguridad\packages\Newtonsoft.Json.6.0.8\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="RestSharp">
+      <HintPath>..\packages\RestSharp.105.0.1\lib\net4\RestSharp.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Aplicaciones\Aplicacion.cs" />
+    <Compile Include="Aplicaciones\MiAplicacion.cs" />
+    <Compile Include="Aplicaciones\MiWeb.cs" />
+    <Compile Include="Compresores\ICompresor.cs" />
+    <Compile Include="Diagnostico\ILogueador.cs" />
+    <Compile Include="Diagnostico\LogueadorEventViewer.cs" />
+    <Compile Include="Diagnostico\LogueadorTxt.cs" />
+    <Compile Include="Encriptadores\AsciiSimple.cs" />
+    <Compile Include="Encriptadores\IEncriptador.cs" />
+    <Compile Include="Encriptadores\Md5.cs" />
+    <Compile Include="Encriptadores\Sha256.cs" />
+    <Compile Include="Excepciones\DevCityFrameworkException.cs" />
+    <Compile Include="Excepciones\Errores.cs" />
+    <Compile Include="Excepciones\FuncionalidadException.cs" />
+    <Compile Include="Excepciones\FuncionalidadValidacionException.cs" />
+    <Compile Include="Funciones\Archivos.cs" />
+    <Compile Include="Compresores\Winrar.cs" />
+    <Compile Include="Funciones\Cadenas.cs" />
+    <Compile Include="Funciones\Carpetas.cs" />
+    <Compile Include="Funciones\Claves.cs" />
+    <Compile Include="Funciones\Convertidores.cs" />
+    <Compile Include="Funciones\Cultura.cs" />
+    <Compile Include="Funciones\Fechas.cs" />
+    <Compile Include="Funciones\Matematicas.cs" />
+    <Compile Include="Funciones\Numeros.cs" />
+    <Compile Include="Funciones\Validadores.cs" />
+    <Compile Include="Mensajeria\CorreoElectronico\CorreoDiscoRigido.cs" />
+    <Compile Include="Mensajeria\CorreoElectronico\CorreoElectronico.cs" />
+    <Compile Include="Mensajeria\CorreoElectronico\CorreoNetMailing.cs" />
+    <Compile Include="Mensajeria\CorreoElectronico\EnumeradoresCorreoElectronico.cs" />
+    <Compile Include="Mensajeria\CorreoElectronico\ICorreoElectronico.cs" />
+    <Compile Include="Mensajeria\CorreoElectronico\SeccionDestinatario.cs" />
+    <Compile Include="Office\DevCityExcel.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Serializadores\ISerializador.cs" />
+    <Compile Include="Serializadores\SerializadorJson.cs" />
+    <Compile Include="Serializadores\SerializadorXml.cs" />
+    <Compile Include="Sistema\IManejoArchivos.cs" />
+    <Compile Include="Sistema\IManejoCarpetas.cs" />
+    <Compile Include="Sistema\IManejoDiscos.cs" />
+    <Compile Include="Sistema\ISistemaArchivos.cs" />
+    <Compile Include="Sistema\ManejoArchivos.cs" />
+    <Compile Include="Sistema\ManejoCarpetas.cs" />
+    <Compile Include="Sistema\ManejoDiscos.cs" />
+    <Compile Include="Sistema\SistemaArchivos.cs" />
+    <Compile Include="Sistema\Windows.cs" />
+    <Compile Include="VariablesGlobales\ConfiguracionIdioma.cs" />
+    <Compile Include="VariablesGlobales\ConfiguracionUsuario.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Compresores\winrar\Rar.exe">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Compresores\winrar\UnRAR.exe">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

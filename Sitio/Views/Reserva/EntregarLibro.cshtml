@@ -1,0 +1,41 @@
+﻿@model DTO.DtoPrestamo
+
+@{
+    ViewBag.Title = "EntregarLibro";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Entregar Libro</h2>
+<br />
+<br />
+<h2>Esta Seguro que desea entregar el siguiente libro ?</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.ValidationSummary(true)
+
+    <div class="form">
+
+        @Html.TextBox("txtId", Model.Id, new { @class = "hidden" })
+
+        @Html.LabelFor(m => m.Libro.Titulo, "Libro", new { @class = "label" })
+        @Html.TextBox("txtLibro", Model.Libro.Titulo, new { @readonly = "readonly", @class = "fields" })
+
+        @Html.LabelFor(model => model.Libro.Cantidad, "Cantidad Disponible", new { @class = "label" })
+        @Html.TextBox("txtCantidad", Model.Libro.Cantidad, new { @readonly = "readonly", placeholder = "Cantidad", @class = "fields" })
+
+        @Html.LabelFor(model => model.PrestamoEstado.Fecha, "Fecha de Prestamo", new { @class = "label" })
+        @Html.TextBox("txtFecha", Model.PrestamoEstado.Fecha, new { @readonly = "readonly", placeholder = "Fecha", @class = "fields" })
+       
+        @Html.LabelFor(model => model.PrestamoEstado.Estado, "Estado", new { @class = "label" })
+        @Html.TextBox("txtEstado", Model.PrestamoEstado.Estado, new { @readonly = "readonly", placeholder = "Estado", @class = "fields" })
+
+        <input type="submit" id="button" value="Entregar Libro" />
+    </div>
+
+}
+
+<br />
+<div>
+    @Html.ActionLink("Home", "Index", "", new { @class = "link" }) |
+</div>
